@@ -44,6 +44,11 @@ namespace Task_1_CameronImbriolo_19013168
             get { return base.symbol; }
         }
 
+        public int GenPerRound
+        {
+            get { return genPerRound; }
+        }
+
         //Constructor
         public ResourceBuilding(string resourceType, int health, Faction unitFaction)
         {

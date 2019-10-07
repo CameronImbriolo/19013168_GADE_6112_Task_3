@@ -16,6 +16,8 @@ namespace Task_1_CameronImbriolo_19013168
         private List<ResourceBuilding> resourceBuildings = new List<ResourceBuilding>();
         private List<FactoryBuilding> factoryBuildings = new List<FactoryBuilding>();
         private int gameRound;
+        private int redResCount = 0;
+        private int blueResCount = 0;
         private static int Unit_Num = 10;
         private Map map = new Map(Unit_Num);
         private int speedCounter = 0;
@@ -45,8 +47,10 @@ namespace Task_1_CameronImbriolo_19013168
                 }
                 else if (u.InRange(u.ClosestEnemy(units)) && u.health > u.maxHealth/4)
                     u.Attack(u.ClosestEnemy(units));
+                else if (u.InRange(u.ClosestEnemy(resourceBuildings)) && u.health > u.maxHealth / 4)
+                    u.Attack(u.ClosestEnemy(resourceBuildings));
                 else
-                    u.Move(units);
+                    u.Move(units, resourceBuildings);
             }
             BuildingLogic();
             units = tempUnits;
@@ -65,6 +69,23 @@ namespace Task_1_CameronImbriolo_19013168
             foreach (ResourceBuilding b in resourceBuildings)
                 result += b.ToString();
             return result;
+        }
+
+        //Displays Resources Gathered of Each Faction
+        public string ResourceInfo()
+        {
+            foreach(ResourceBuilding b in resourceBuildings)
+            {
+                if (b.UnitFaction == Faction.Red)
+                {
+                    redResCount += b.GenPerRound;
+                }
+                else if(b.UnitFaction == Faction.Blue)
+                {
+                    blueResCount += b.GenPerRound;
+                }
+            }
+            return String.Format("Red Resources = {0} |||||| Blue Resources = {1}", redResCount, blueResCount);
         }
 
         //Handles the logic of buildings
@@ -95,8 +116,17 @@ namespace Task_1_CameronImbriolo_19013168
                     b.SpeedCounter++;
                     if (b.SpeedCounter == b.ProductionSpeed)
                     {
-                        units.Add(b.SpawnUnit());
                         b.SpeedCounter = 0;
+                        if (b.UnitFaction == Faction.Red && redResCount >= 1000)
+                        {
+                            redResCount -= 1000;
+                            units.Add(b.SpawnUnit());
+                        }
+                        else if (b.UnitFaction == Faction.Blue && blueResCount >= 1000)
+                        {
+                            blueResCount -= 1000;
+                            units.Add(b.SpawnUnit());
+                        }
                     }
                 }
                     

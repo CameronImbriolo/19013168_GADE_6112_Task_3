@@ -56,6 +56,7 @@ namespace Task_1_CameronImbriolo_19013168
                     mapBox.Controls.Add(newLabel);
                 }
                 gameInfoTxt.Text = engine.GameInfo();
+                lblResource.Text = engine.ResourceInfo();
             }
         }
 
@@ -78,6 +79,16 @@ namespace Task_1_CameronImbriolo_19013168
         private void BtnSave_Click(object sender, EventArgs e)
         {
             engine.Save();
+        }
+
+        private void mapBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblResource_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -113,6 +113,14 @@ namespace Task_1_CameronImbriolo_19013168
             }
         }
 
+        public override void Attack(ResourceBuilding u)
+        {
+            if (InRange(u) && u != null)
+            {
+                u.TakeDamage(Damage);
+            }
+        }
+
         //Handles a unit taking damage
         public override void TakeDamage(int damage)
         {
@@ -128,6 +136,26 @@ namespace Task_1_CameronImbriolo_19013168
             foreach (Unit u in units)
             {
                 if (u.faction != this.faction)
+                {
+                    tempDist = calcDist(u);
+                    if (tempDist <= distance)
+                    {
+                        distance = tempDist;
+                        result = u;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public override ResourceBuilding ClosestEnemy(List<ResourceBuilding> units)
+        {
+            float tempDist = 0;
+            float distance = 100000;
+            ResourceBuilding result = null;
+            foreach (ResourceBuilding u in units)
+            {
+                if (u.UnitFaction != this.faction)
                 {
                     tempDist = calcDist(u);
                     if (tempDist <= distance)
@@ -165,8 +193,23 @@ namespace Task_1_CameronImbriolo_19013168
             }
         }
 
+        public override bool InRange(ResourceBuilding resourceBuilding)
+        {
+            float dist = calcDist(resourceBuilding);
+            if (dist <= Melee_Range)
+            {
+                IsAttacking = true;
+                return true;
+            }
+            else
+            {
+                IsAttacking = false;
+                return false;
+            }
+        }
+
         //Handles the movement of units via coordinates
-        public override void Move(List<Unit> units)
+        public override void Move(List<Unit> units, List<ResourceBuilding> buildings)
         {
             speedCounter++;
             if(speed == speedCounter && !IsAttacking && !IsDead() && Health >= MaxHealth/4)
@@ -186,6 +229,23 @@ namespace Task_1_CameronImbriolo_19013168
                         xPos--;
                         break;
                     default:
+                        switch (EnemyDir(buildings))
+                        {
+                            case Direction.North:
+                                yPos--;
+                                break;
+                            case Direction.East:
+                                xPos++;
+                                break;
+                            case Direction.South:
+                                yPos++;
+                                break;
+                            case Direction.West:
+                                xPos--;
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                 }
                 speedCounter = 0;
@@ -224,13 +284,34 @@ namespace Task_1_CameronImbriolo_19013168
         private Direction EnemyDir(List<Unit> units)
         {
             Unit unit = ClosestEnemy(units);
-            if (unit.xPos > this.xPos)
+            if(unit != null)
+            {
+
+                if (unit.xPos > this.xPos)
+                    return Direction.East;
+                else if (unit.xPos < this.xPos)
+                    return Direction.West;
+                else if (unit.yPos > this.yPos)
+                    return Direction.South;
+                else if (unit.yPos < this.yPos)
+                    return Direction.North;
+            }
+                Random r = new Random();
+                return (Direction)r.Next(0, 4);
+            
+            
+        }
+
+        private Direction EnemyDir(List<ResourceBuilding> units)
+        {
+            ResourceBuilding unit = ClosestEnemy(units);
+            if (unit.XPos > this.xPos)
                 return Direction.East;
-            else if (unit.xPos < this.xPos)
+            else if (unit.XPos < this.xPos)
                 return Direction.West;
-            else if (unit.yPos > this.yPos)
+            else if (unit.YPos > this.yPos)
                 return Direction.South;
-            else if (unit.yPos < this.yPos)
+            else if (unit.YPos < this.yPos)
                 return Direction.North;
             else
             {
@@ -251,6 +332,28 @@ namespace Task_1_CameronImbriolo_19013168
                 x2 = u.xPos;
                 y1 = this.yPos;
                 y2 = u.yPos;
+
+                xd = x2 - x1;
+                yd = y2 - y1;
+                dist = (float)Math.Sqrt(xd * xd + yd * yd);
+                return dist;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        private float calcDist(ResourceBuilding u)
+        {
+            try
+            {
+                float xd, yd, x1, y1, x2, y2;
+                float dist = 0;
+                x1 = this.xPos;
+                x2 = u.XPos;
+                y1 = this.yPos;
+                y2 = u.YPos;
 
                 xd = x2 - x1;
                 yd = y2 - y1;
