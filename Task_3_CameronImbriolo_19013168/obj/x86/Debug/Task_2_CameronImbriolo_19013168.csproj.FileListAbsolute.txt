@@ -1,0 +1,10 @@
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\bin\Debug\WindowsApplication.exe.config
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\bin\Debug\WindowsApplication.exe
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\bin\Debug\WindowsApplication.pdb
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\Task_2_CameronImbriolo_19013168.csprojAssemblyReference.cache
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\Task_1_CameronImbriolo_19013168.Form1.resources
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\Task_2_CameronImbriolo_19013168.Properties.Resources.resources
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\Task_2_CameronImbriolo_19013168.csproj.GenerateResource.cache
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\Task_2_CameronImbriolo_19013168.csproj.CoreCompileInputs.cache
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\WindowsApplication.exe
+D:\2nd Simester\GADE\POE\Task1\Task_1_CameronImbriolo_19013168\Task_1_CameronImbriolo_19013168\obj\x86\Debug\WindowsApplication.pdb
