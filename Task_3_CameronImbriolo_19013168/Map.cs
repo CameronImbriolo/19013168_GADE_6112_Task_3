@@ -139,6 +139,21 @@ namespace Task_1_CameronImbriolo_19013168
 
             return allFactory;
         }
+
+        public List<Unit> GenerateWizards()
+        {
+            for (int i = 0; i < amount / 2; i++)
+            {
+                WizardUnit w = new WizardUnit("Wizard", 50, Faction.Grey, 1);
+                allUnits.Add(w);
+            }
+            foreach (Unit u in allUnits)
+            {
+                u.xPos = r.Next(0, 21);
+                u.yPos = r.Next(0, 21);
+            }
+            return allUnits;
+        }
     }
 }
 

@@ -9,7 +9,8 @@ namespace Task_1_CameronImbriolo_19013168
     public enum Faction
     {
         Red,
-        Blue
+        Blue, 
+        Grey
     }
 
     public enum Direction

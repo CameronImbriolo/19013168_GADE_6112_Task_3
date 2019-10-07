@@ -65,6 +65,7 @@
     <Compile Include="RangedUnit.cs" />
     <Compile Include="ResourceBuilding.cs" />
     <Compile Include="Unit.cs" />
+    <Compile Include="WizardUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

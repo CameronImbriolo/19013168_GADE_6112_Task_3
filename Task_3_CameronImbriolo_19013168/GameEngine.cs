@@ -47,7 +47,7 @@ namespace Task_1_CameronImbriolo_19013168
                 }
                 else if (u.InRange(u.ClosestEnemy(units)) && u.health > u.maxHealth/4)
                     u.Attack(u.ClosestEnemy(units));
-                else if (u.InRange(u.ClosestEnemy(resourceBuildings)) && u.health > u.maxHealth / 4)
+                else if (u.InRange(u.ClosestEnemy(resourceBuildings)) && u.health > u.maxHealth / 4 && u.faction != Faction.Grey)
                     u.Attack(u.ClosestEnemy(resourceBuildings));
                 else
                     u.Move(units, resourceBuildings);
@@ -142,6 +142,7 @@ namespace Task_1_CameronImbriolo_19013168
             factoryBuildings.Clear();
             resourceBuildings = map.GenerateResourceBuildings();
             factoryBuildings = map.GenerateFactoryBuildings();
+            units = map.GenerateWizards();
         }
 
         //Q.2.11 Save method
